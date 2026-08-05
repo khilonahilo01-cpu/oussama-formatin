@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>دورة التجارة الإلكترونية والصناعة المحلية — By Oussama Sena</title>
+<meta name="description" content="دورة تطبيقية حضورية يومي 15 و16 أوت بالشراڤة، من الصفر إلى أول طلبية في التجارة الإلكترونية والصناعة المحلية، مع متابعة شهر كامل.">
+<meta name="theme-color" content="#05070b">
+
+<!-- معاينة الرابط عند مشاركته في واتساب وفايسبوك -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="دورة التجارة الإلكترونية والصناعة المحلية — By Oussama Sena">
+<meta property="og:description" content="من الصفر إلى أول طلبية. دورة حضورية تطبيقية يومي 15 و16 أوت بالشراڤة.">
+<meta property="og:locale" content="ar_DZ">
+<!-- ⚠️ قبل النشر: ضع صورة 1200×630 باسم assets/og.jpg، وبدّل الرابط أدناه برابط موقعك -->
+<meta property="og:image" content="assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<!-- ?v=1 : زد الرقم كل مرة تعدّل فيها الملفات حتى يأخذ الزوار النسخة الجديدة -->
+<link rel="stylesheet" href="styles.css?v=1">
+</head>
+<body>
+
+<!-- ==========================================================
+     مكتبة الأيقونات (SVG) — تُستدعى عبر <use href="#icon-...">
+     ========================================================== -->
+<svg class="icon-sprite" aria-hidden="true" focusable="false">
+  <defs>
+    <g id="i-page"><path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h5"/></g>
+    <g id="i-card"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20M6 15h4"/></g>
+    <g id="i-store"><path d="M4 10v10h16V10"/><path d="M3 4h18l1 5a3 3 0 0 1-6 0 3 3 0 0 1-6 0 3 3 0 0 1-6 0z"/><path d="M10 20v-5h4v5"/></g>
+    <g id="i-message"><path d="M21 12a8 8 0 0 1-11.6 7.1L3 21l1.9-6.4A8 8 0 1 1 21 12z"/></g>
+    <g id="i-globe"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></g>
+    <g id="i-video"><path d="M9 18a3 3 0 1 0 3-3V4c1 2.5 2.7 3.8 5 4"/></g>
+    <g id="i-search"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></g>
+    <g id="i-cart"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.6 12h11L21 7H6"/></g>
+    <g id="i-rocket"><path d="M5 15c-1 2-1 5-1 5s3 0 5-1"/><path d="M9 15l-3-3c3-8 9-10 13-10 0 4-2 10-10 13z"/><circle cx="14.5" cy="9.5" r="1.6"/></g>
+    <g id="i-layers"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></g>
+    <g id="i-award"><circle cx="12" cy="9" r="5"/><path d="M8.5 13.5L7 22l5-3 5 3-1.5-8.5"/></g>
+    <g id="i-truck"><path d="M2 6h11v10H2z"/><path d="M13 9h4l4 4v3h-8"/><circle cx="6" cy="18" r="1.7"/><circle cx="17" cy="18" r="1.7"/></g>
+    <g id="i-gem"><path d="M6 3h12l3 6-9 12L3 9z"/><path d="M3 9h18M9 3l-3 6 6 12 6-12-3-6"/></g>
+    <g id="i-shield"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></g>
+    <g id="i-tag"><path d="M3 12V4h8l9 9-8 8z"/><circle cx="7.5" cy="7.5" r="1.4"/></g>
+    <g id="i-calc"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 12h2M14 12h2M8 16h2M14 16h2"/></g>
+    <g id="i-alert"><path d="M12 3l9 16H3z"/><path d="M12 9v4M12 16.5v.5"/></g>
+    <g id="i-phone"><path d="M6 3h3l2 5-2.5 1.5a12 12 0 0 0 6 6L16 13l5 2v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4 5.2 2 2 0 0 1 6 3z"/></g>
+    <g id="i-factory"><path d="M3 21V10l6 4V10l6 4V6h6v15z"/><path d="M8 21v-3M14 21v-3M19 21v-3"/></g>
+    <!-- أيقونات المنصات -->
+    <g id="i-meta"><path d="M6.5 8.5c-2 0-3.5 1.6-3.5 3.5s1.5 3.5 3.5 3.5c2.6 0 4-3.5 5.5-3.5s2.9 3.5 5.5 3.5c2 0 3.5-1.6 3.5-3.5s-1.5-3.5-3.5-3.5c-2.6 0-4 3.5-5.5 3.5S9.1 8.5 6.5 8.5z"/></g>
+    <g id="i-shopify"><path d="M6 7h12l1 13H5z"/><path d="M9 7V5.5a3 3 0 0 1 6 0V7"/></g>
+  </defs>
+</svg>
+
+<!-- ==========================================================
+     الشريط العلوي
+     ========================================================== -->
+<header class="topbar" id="topbar">
+  <div class="wrap topbar__in">
+    <a href="#hero" class="brand">
+      <span class="brand__mark" aria-hidden="true"></span>
+      <span class="brand__txt">دورة التجارة الإلكترونية<small>By Oussama Sena</small></span>
+    </a>
+    <a href="#tasjil" class="btn btn--sm btn--primary">سجّل مكانك</a>
+  </div>
+</header>
+
+<main>
+
+<!-- ==========================================================
+     1) القسم الأول — Hero
+     ========================================================== -->
+<section class="hero" id="hero">
+  <div class="hero__glow" aria-hidden="true"></div>
+  <div class="wrap hero__grid">
+
+    <div class="hero__text">
+      <span class="pill reveal">دورة حضورية · يومان · الشراڤة</span>
+      <h1 class="reveal">من الصفر إلى <span class="grad">أول طلبية</span> في التجارة الإلكترونية والصناعة المحلية</h1>
+      <p class="lead reveal">دورة تطبيقية حضورية مع Oussama Sena تساعدك على إطلاق مشروعك خطوة بخطوة، حتى لو لم تكن تملك أي خبرة سابقة.</p>
+
+      <ul class="factgrid reveal">
+        <li class="fact"><span class="fact__ico">📅</span><span class="fact__k">التاريخ</span><span class="fact__v">15 و16 أوت</span></li>
+        <li class="fact"><span class="fact__ico">📍</span><span class="fact__k">المكان</span><span class="fact__v">الشراڤة</span></li>
+        <li class="fact"><span class="fact__ico">🎓</span><span class="fact__k">المستوى</span><span class="fact__v">من الصفر إلى الاحتراف</span></li>
+        <li class="fact"><span class="fact__ico">💬</span><span class="fact__k">المتابعة</span><span class="fact__v">شهر كامل للإجابة عن أسئلتكم ومتابعة تطبيقكم</span></li>
+      </ul>
+
+      <div class="hero__cta reveal">
+        <a href="#tasjil" class="btn btn--primary btn--lg">سجّل مكانك الآن</a>
+        <a href="#barnamej" class="btn btn--ghost btn--lg">اكتشف برنامج الدورة</a>
+      </div>
+
+      <p class="hero__note reveal">السعر: <b>29,000 دج</b> · الأماكن محدودة</p>
+    </div>
+
+    <!-- Visual: متجر إلكتروني على الهاتف + طلبيات + طرود + المنصات -->
+    <div class="hero__visual reveal">
+      <div class="stage" aria-hidden="true">
+      <div class="phone">
+        <svg viewBox="0 0 320 600" class="phone__svg" role="img">
+          <defs>
+            <linearGradient id="gScreen" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#0d1420"/><stop offset="1" stop-color="#070b12"/>
+            </linearGradient>
+            <linearGradient id="gBtn" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#00ffa3"/><stop offset="1" stop-color="#12b8ff"/>
+            </linearGradient>
+          </defs>
+          <rect x="6" y="6" width="308" height="588" rx="44" fill="url(#gScreen)" stroke="#1e2b3d" stroke-width="2"/>
+          <rect x="120" y="18" width="80" height="9" rx="4.5" fill="#1b2637"/>
+
+          <!-- رأس المتجر -->
+          <text x="288" y="70" class="sv-t sv-lg" text-anchor="end">متجرك</text>
+          <text x="288" y="94" class="sv-t sv-sm" text-anchor="end">منتجات محلية · توصيل 58 ولاية</text>
+          <rect x="32" y="52" width="34" height="34" rx="10" fill="#0f2030" stroke="#1e3a52"/>
+          <path d="M41 76v-12h16v12" stroke="#00ffa3" stroke-width="2" fill="none"/>
+          <path d="M38 64l3-6h16l3 6" stroke="#00ffa3" stroke-width="2" fill="none"/>
+
+          <!-- شبكة المنتجات -->
+          <g>
+            <rect x="32" y="112" width="120" height="140" rx="16" fill="#0e1724" stroke="#1c2a3c"/>
+            <rect x="46" y="126" width="92" height="72" rx="10" fill="#132234"/>
+            <path d="M62 186l18-22 14 16 10-10 18 16" stroke="#12b8ff" stroke-width="2.5" fill="none"/>
+            <rect x="46" y="208" width="70" height="8" rx="4" fill="#22354a"/>
+            <rect x="46" y="224" width="44" height="10" rx="5" fill="#00ffa3" opacity=".85"/>
+
+            <rect x="168" y="112" width="120" height="140" rx="16" fill="#0e1724" stroke="#1c2a3c"/>
+            <rect x="182" y="126" width="92" height="72" rx="10" fill="#132234"/>
+            <path d="M198 186l16-20 12 14 12-12 16 18" stroke="#00ffa3" stroke-width="2.5" fill="none"/>
+            <rect x="182" y="208" width="70" height="8" rx="4" fill="#22354a"/>
+            <rect x="182" y="224" width="44" height="10" rx="5" fill="#12b8ff" opacity=".85"/>
+          </g>
+
+          <!-- صندوق / طرد -->
+          <g transform="translate(32,272)">
+            <rect x="0" y="0" width="256" height="96" rx="16" fill="#0e1724" stroke="#1c2a3c"/>
+            <path d="M22 34h44v40H22z" fill="#16283c"/>
+            <path d="M22 34h44v40H22zM22 46h44M44 34v40" stroke="#12b8ff" stroke-width="2" fill="none"/>
+            <text x="234" y="46" class="sv-t sv-md" text-anchor="end">طرد جاهز للشحن</text>
+            <text x="234" y="70" class="sv-t sv-sm" text-anchor="end">تغليف بعلامتك الخاصة</text>
+          </g>
+
+          <!-- زر الشراء -->
+          <rect x="32" y="392" width="256" height="56" rx="28" fill="url(#gBtn)"/>
+          <text x="160" y="428" class="sv-btn" text-anchor="middle">اطلب الآن</text>
+
+          <!-- مؤشرات -->
+          <rect x="32" y="470" width="122" height="76" rx="16" fill="#0e1724" stroke="#1c2a3c"/>
+          <text x="142" y="502" class="sv-t sv-sm" text-anchor="end">طلبيات اليوم</text>
+          <text x="142" y="532" class="sv-num" text-anchor="end">24</text>
+          <rect x="166" y="470" width="122" height="76" rx="16" fill="#0e1724" stroke="#1c2a3c"/>
+          <text x="276" y="502" class="sv-t sv-sm" text-anchor="end">هامش الربح</text>
+          <text x="276" y="532" class="sv-num sv-num--b" text-anchor="end">42%</text>
+        </svg>
+      </div>
+
+      <div class="chip chip--1"><b>طلبية جديدة</b><span>تم التأكيد ✅</span></div>
+      <div class="chip chip--2"><b>الحملة تعمل</b><span>أول 100 زائر 🚀</span></div>
+      </div><!-- /.stage -->
+
+      <!-- المنصات التي تغطيها الدورة -->
+      <div class="platforms">
+        <span class="platforms__k">ستتعلم العمل على</span>
+        <ul class="platforms__list list-reset">
+          <li class="plat plat--meta"><svg class="plat__ico"><use href="#i-meta"/></svg>ميتا أدس</li>
+          <li class="plat plat--shopify"><svg class="plat__ico"><use href="#i-shopify"/></svg>شوبيفاي</li>
+          <li class="plat plat--tiktok"><svg class="plat__ico"><use href="#i-video"/></svg>تيك توك</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ==========================================================
+     2) النتيجة
+     ========================================================== -->
+<section class="sec" id="natija">
+  <div class="wrap">
+    <header class="sec__head reveal">
+      <span class="kicker">النتيجة</span>
+      <h2>لن تخرج بمعلومات فقط… <span class="grad">ستخرج بمشروع قابل للانطلاق</span></h2>
+    </header>
+
+    <div class="grid grid--4">
+      <article class="card card--num reveal"><span class="num">01</span><h3>إنشاء صفحاتك وحساباتك التجارية</h3></article>
+      <article class="card card--num reveal"><span class="num">02</span><h3>إطلاق متجرك الإلكتروني</h3></article>
+      <article class="card card--num reveal"><span class="num">03</span><h3>تعلم الإعلانات الممولة على مختلف المنصات</h3></article>
+      <article class="card card--num reveal"><span class="num">04</span><h3>اختيار منتج وتجربته عملياً خلال الدورة</h3></article>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================
+     3) برنامج التجارة الإلكترونية
+     ========================================================== -->
+<section class="sec sec--alt" id="barnamej">
+  <div class="wrap">
+    <header class="sec__head reveal">
+      <span class="kicker">المحور الأول</span>
+      <h2>ماذا ستتعلم في <span class="grad">التجارة الإلكترونية</span>؟</h2>
+    </header>
+
+    <ul class="grid grid--3 list-reset">
+      <li class="card card--ico reveal"><svg class="ico"><use href="#i-page"/></svg><h3>كيفية إنشاء صفحة احترافية على فايسبوك</h3></li>
+      <li class="card card--ico reveal"><svg class="ico"><use href="#i-card"/></svg><h3>كيفية إنشاء بطاقة Visa عبر RedotPay</h3></li>
+      <li class="card card--ico reveal"><svg class="ico"><use href="#i-store"/></svg><h3>كيفية فتح متجر إلكتروني</h3></li>
+      <li class="card card--ico reveal"><svg class="ico"><use href="#i-message"/></svg><h3>كيفية إطلاق إعلانات ممولة عبر الرسائل</h3></li>
+      <li class="card card--ico reveal"><svg class="ico"><use href="#i-globe"/></svg><h3>كيفية إطلاق إعلانات ممولة عبر الموقع الإلكتروني</h3></li>
+      <li class="card card--ico reveal"><svg class="ico"><use href="#i-video"/></svg><h3>كيفية إطلاق الإعلانات عبر تطبيق TikTok</h3></li>
+      <li class="card card--ico reveal"><svg class="ico"><use href="#i-search"/></svg><h3>كيفية اختيار المنتج المناسب للبيع</h3></li>
+      <li class="card card--ico reveal"><svg class="ico"><use href="#i-cart"/></svg><h3>كيفية استقبال الطلبات والتعامل معها</h3></li>
+      <li class="card card--ico reveal"><svg class="ico"><use href="#i-rocket"/></svg><h3>كيفية الانتقال من الفكرة إلى أول حملة إعلانية</h3></li>
+    </ul>
+
+    <div class="sec__cta reveal"><a href="#tasjil" class="btn btn--primary">سجّل مكانك الآن</a></div>
+  </div>
+</section>
+
+<!-- ==========================================================
+     4) الصناعة المحلية
+     ========================================================== -->
+<section class="sec" id="sinaa">
+  <div class="wrap">
+    <header class="sec__head reveal">
+      <span class="kicker">المحور الثاني</span>
+      <h2>أسرار <span class="grad">الصناعة المحلية</span> وبناء منتجك الخاص</h2>
+      <p class="sec__sub">في هذا الجزء ستتعلم كيف تنتقل من مجرد بائع إلى صاحب منتج وعلامة تجارية خاصة بك.</p>
+    </header>
+
+    <ul class="grid grid--2 list-reset">
+      <li class="row reveal"><svg class="ico ico--b"><use href="#i-layers"/></svg><span>التعرف على القماش وأنواعه المختلفة</span></li>
+      <li class="row reveal"><svg class="ico ico--b"><use href="#i-award"/></svg><span>معرفة الماركات والخامات المناسبة لكل منتج</span></li>
+      <li class="row reveal"><svg class="ico ico--b"><use href="#i-truck"/></svg><span>التعرف على مصادر شراء الخامات بأسعار تنافسية</span></li>
+      <li class="row reveal"><svg class="ico ico--b"><use href="#i-gem"/></svg><span>اكتشاف خامات ومنتجات غير منتشرة في السوق</span></li>
+      <li class="row reveal"><svg class="ico ico--b"><use href="#i-shield"/></svg><span>كيفية بناء منتج يصعب على المنافسين تقليده</span></li>
+      <li class="row reveal"><svg class="ico ico--b"><use href="#i-tag"/></svg><span>كيفية تسعير المنتج بطريقة صحيحة</span></li>
+      <li class="row reveal"><svg class="ico ico--b"><use href="#i-calc"/></svg><span>حساب التكاليف وهامش الربح</span></li>
+      <li class="row reveal"><svg class="ico ico--b"><use href="#i-alert"/></svg><span>كيفية الابتعاد عن الخسارة</span></li>
+      <li class="row reveal"><svg class="ico ico--b"><use href="#i-phone"/></svg><span>الحصول على أرقام الورشات التي يتعامل معها Oussama</span></li>
+      <li class="row reveal"><svg class="ico ico--b"><use href="#i-factory"/></svg><span>فهم خطوات الانتقال من الفكرة إلى التصنيع</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ==========================================================
+     5) التطبيق العملي
+     ========================================================== -->
+<section class="practice" id="tatbiq">
+  <div class="wrap practice__in reveal">
+    <span class="kicker kicker--dark">اليوم الثاني</span>
+    <h2>في اليوم الأخير… <span class="grad">ستبدأ العمل فعلياً</span></h2>
+    <p>في اليوم الأخير سيتم اختيار منتج وإجراء Test عملي عليه، بداية من تجهيز العرض والإعلان، وصولاً إلى إطلاق الحملة واستقبال الطلبات.</p>
+    <blockquote class="quote">هدفنا أن تخرج من الدورة وأنت تملك مشروعاً جاهزاً وأولى الطلبات بإذن الله.</blockquote>
+    <a href="#tasjil" class="btn btn--primary btn--lg">سجّل مكانك الآن</a>
+  </div>
+</section>
+
+<!-- ==========================================================
+     6) نتائج طلابنا + فيديو شهادة
+     المحتوى يُحرَّر من RESULTS و CONFIG.video في script.js
+     ========================================================== -->
+<section class="sec sec--alt" id="nataij">
+  <div class="wrap">
+    <header class="sec__head reveal">
+      <span class="kicker">أرض الواقع</span>
+      <h2>نتائج <span class="grad">طلابنا</span></h2>
+      <p class="sec__sub">مشاركون بدؤوا من الصفر… وهذه نتائجهم بعد الدورة.</p>
+    </header>
+
+    <div class="grid grid--3" id="resultsGrid"></div>
+
+    <div class="videowrap" id="videoBlock" hidden></div>
+
+    <div class="sec__cta reveal"><a href="#tasjil" class="btn btn--primary btn--lg">سجّل مكانك الآن</a></div>
+  </div>
+</section>
+
+<!-- ==========================================================
+     7) لمن هذه الدورة؟
+     ========================================================== -->
+<section class="sec" id="liman">
+  <div class="wrap">
+    <header class="sec__head reveal">
+      <span class="kicker">الفئة المستهدفة</span>
+      <h2>لمن هذه <span class="grad">الدورة</span>؟</h2>
+    </header>
+
+    <div class="grid grid--3">
+      <article class="card card--check reveal"><h3>المبتدئ الذي يريد دخول التجارة الإلكترونية</h3></article>
+      <article class="card card--check reveal"><h3>من يملك منتجاً لكنه لا يعرف كيف يسوقه</h3></article>
+      <article class="card card--check reveal"><h3>من يريد إطلاق علامة تجارية محلية</h3></article>
+      <article class="card card--check reveal"><h3>من يخسر في الإعلانات ولا يعرف السبب</h3></article>
+      <article class="card card--check reveal"><h3>من يريد تعلم التجارة الإلكترونية بطريقة تطبيقية</h3></article>
+      <article class="card card--check reveal"><h3>من يبحث عن موردين وورشات موثوقة</h3></article>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================
+     7) معلومات الدورة
+     ========================================================== -->
+<section class="sec sec--alt" id="maalumat">
+  <div class="wrap">
+    <header class="sec__head reveal">
+      <span class="kicker">التفاصيل</span>
+      <h2>معلومات <span class="grad">الدورة</span></h2>
+    </header>
+
+    <div class="infocard reveal">
+      <div class="infocard__grid">
+        <div class="info"><span class="info__k">التاريخ</span><span class="info__v">15 و16 أوت</span></div>
+        <div class="info"><span class="info__k">نوع الدورة</span><span class="info__v">حضورية</span></div>
+        <div class="info"><span class="info__k">المكان</span><span class="info__v">الشراڤة</span></div>
+        <div class="info"><span class="info__k">مدة الدورة</span><span class="info__v">يومان</span></div>
+        <div class="info"><span class="info__k">المتابعة</span><span class="info__v">شهر كامل بعد الدورة</span></div>
+      </div>
+
+      <div class="price">
+        <span class="price__k">السعر</span>
+        <span class="price__v">29,000 <small>دج</small></span>
+        <a href="#tasjil" class="btn btn--primary btn--lg btn--block">سجّل مكانك الآن</a>
+      </div>
+    </div>
+
+    <p class="warn reveal"><span aria-hidden="true">⚠️</span> الأماكن محدودة لضمان جودة التطبيق والمتابعة مع المشاركين.</p>
+  </div>
+</section>
+
+<!-- ==========================================================
+     8) نموذج التسجيل
+     ========================================================== -->
+<section class="sec" id="tasjil">
+  <div class="wrap wrap--narrow">
+    <header class="sec__head reveal">
+      <span class="kicker">التسجيل</span>
+      <h2>احجز <span class="grad">مكانك</span> في الدورة</h2>
+      <p class="sec__sub">15 و16 أوت · الشراڤة · 29,000 دج — أكمل البيانات وسنتواصل معك لتأكيد مكانك.</p>
+    </header>
+
+    <div class="formwrap reveal">
+      <!-- name + data-netlify: يجعل Netlify يلتقط الطلبات تلقائياً بعد الرفع
+           bot-field: فخّ للروبوتات المزعجة (مخفي عن الزائر) -->
+      <form id="regForm" class="form" name="tasjil" method="POST"
+            data-netlify="true" netlify-honeypot="bot-field" novalidate>
+        <input type="hidden" name="form-name" value="tasjil">
+        <p class="hp"><label>لا تملأ هذا الحقل <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+
+
+        <div class="field">
+          <label for="fName">الاسم واللقب <i>*</i></label>
+          <input type="text" id="fName" name="name" autocomplete="name" placeholder="مثال: أسامة بن علي" required>
+          <span class="err" data-err="fName"></span>
+        </div>
+
+        <div class="field">
+          <label for="fPhone">رقم الهاتف <i>*</i></label>
+          <input type="tel" id="fPhone" name="phone" inputmode="numeric" autocomplete="tel" placeholder="0X XX XX XX XX" required>
+          <span class="err" data-err="fPhone"></span>
+        </div>
+
+        <div class="field">
+          <label for="fWilaya">الولاية <i>*</i></label>
+          <select id="fWilaya" name="wilaya" required>
+            <option value="">اختر ولايتك</option>
+          </select>
+          <span class="err" data-err="fWilaya"></span>
+        </div>
+
+        <fieldset class="field">
+          <legend>هل لديك خبرة في التجارة الإلكترونية؟ <i>*</i></legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="experience" value="لا، مبتدئ تماماً" required><span>لا، مبتدئ تماماً</span></label>
+            <label class="choice"><input type="radio" name="experience" value="خبرة بسيطة"><span>خبرة بسيطة</span></label>
+            <label class="choice"><input type="radio" name="experience" value="نعم، لدي خبرة"><span>نعم، لدي خبرة</span></label>
+          </div>
+          <span class="err" data-err="experience"></span>
+        </fieldset>
+
+        <fieldset class="field">
+          <legend>هل لديك منتج حالياً؟ <i>*</i></legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="product" value="نعم" required><span>نعم</span></label>
+            <label class="choice"><input type="radio" name="product" value="لا"><span>لا</span></label>
+            <label class="choice"><input type="radio" name="product" value="لدي فكرة فقط"><span>لدي فكرة فقط</span></label>
+          </div>
+          <span class="err" data-err="product"></span>
+        </fieldset>
+
+        <div class="field">
+          <label for="fGoal">ما هو هدفك من الدورة؟</label>
+          <textarea id="fGoal" name="goal" rows="4" placeholder="اكتب باختصار ما الذي تريد تحقيقه بعد الدورة…"></textarea>
+        </div>
+
+        <fieldset class="field">
+          <legend>طريقة التواصل المفضلة <i>*</i></legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="contact" value="اتصال" required><span>📞 اتصال</span></label>
+            <label class="choice"><input type="radio" name="contact" value="واتساب"><span>💬 واتساب</span></label>
+          </div>
+          <span class="err" data-err="contact"></span>
+        </fieldset>
+
+        <button type="submit" class="btn btn--primary btn--lg btn--block">أرسل طلب التسجيل</button>
+        <p class="form__hint">بياناتك تُستعمل فقط للتواصل معك بخصوص الدورة.</p>
+      </form>
+
+      <!-- رسالة النجاح -->
+      <div class="success" id="successBox" hidden>
+        <div class="success__ico" aria-hidden="true">✓</div>
+        <h3>تم استلام تسجيلك بنجاح، سيتواصل معك فريقنا لتأكيد مكانك.</h3>
+        <p class="success__sub">احتفظ بهاتفك قريباً منك — التأكيد يتم خلال 24 ساعة.</p>
+        <div class="success__actions">
+          <a class="btn btn--primary" data-wa-link href="#">أرسل تأكيداً عبر واتساب</a>
+          <button type="button" class="btn btn--ghost" id="againBtn">تسجيل شخص آخر</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================
+     9) الأسئلة الشائعة
+     ========================================================== -->
+<section class="sec sec--alt" id="asila">
+  <div class="wrap wrap--narrow">
+    <header class="sec__head reveal">
+      <span class="kicker">الأسئلة الشائعة</span>
+      <h2>أسئلة <span class="grad">يتكرر طرحها</span></h2>
+    </header>
+
+    <div class="faq">
+      <details class="qa reveal">
+        <summary>هل الدورة مناسبة للمبتدئين؟</summary>
+        <div class="qa__body"><p>نعم، الدورة تبدأ من الصفر ولا تحتاج إلى خبرة سابقة.</p></div>
+      </details>
+      <details class="qa reveal">
+        <summary>هل أحتاج إلى حاسوب؟</summary>
+        <div class="qa__body"><p>يفضل إحضار حاسوب محمول للاستفادة من الجانب التطبيقي.</p></div>
+      </details>
+      <details class="qa reveal">
+        <summary>هل توجد متابعة بعد الدورة؟</summary>
+        <div class="qa__body"><p>نعم، توجد متابعة لمدة شهر للإجابة عن الأسئلة ومتابعة التطبيق.</p></div>
+      </details>
+      <details class="qa reveal">
+        <summary>هل الدورة نظرية فقط؟</summary>
+        <div class="qa__body"><p>لا، الدورة تطبيقية وتتضمن اختيار منتج وإجراء Test عملي عليه.</p></div>
+      </details>
+      <details class="qa reveal">
+        <summary>هل السعر يشمل المتابعة؟</summary>
+        <div class="qa__body"><p>نعم، السعر يشمل يومي التكوين وشهر المتابعة.</p></div>
+      </details>
+    </div>
+
+    <div class="sec__cta reveal"><a href="#tasjil" class="btn btn--primary btn--lg">سجّل مكانك الآن</a></div>
+  </div>
+</section>
+
+</main>
+
+<!-- ==========================================================
+     Footer
+     ========================================================== -->
+<footer class="footer">
+  <div class="wrap footer__in">
+    <p class="footer__title">دورة التجارة الإلكترونية والصناعة المحلية — By Oussama Sena</p>
+    <p class="footer__meta">15 و16 أوت · الشراڤة · 29,000 دج</p>
+
+    <div class="socials">
+      <a class="social social--wa" data-wa-link href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.6 14.2c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1a13 13 0 0 1-5.6-4.6c-.4-.6-1-1.5-1-2.9 0-1.3.7-2 1-2.3.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2 0 .4-.1.5l-.4.5c-.1.2-.3.3-.1.6.5.9 1.1 1.5 1.8 2 .3.2.5.2.7 0l.7-.8c.2-.2.3-.2.6-.1l1.8.9c.2.1.4.2.4.3.1.2.1.7-.1 1.3z"/></svg>
+        <span>واتساب</span>
+      </a>
+      <a class="social social--ig" data-ig-link href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.3 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c0 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2 0-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c0-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4 1.3-.1 1.7-.1 4.8-.1zm0 3.2A6.6 6.6 0 1 0 18.6 12 6.6 6.6 0 0 0 12 5.4zm0 10.9A4.3 4.3 0 1 1 16.3 12 4.3 4.3 0 0 1 12 16.3zm6.9-11.1a1.5 1.5 0 1 1-1.5-1.5 1.5 1.5 0 0 1 1.5 1.5z"/></svg>
+        <span>إنستغرام</span>
+      </a>
+    </div>
+
+    <p class="footer__copy">جميع الحقوق محفوظة © <span id="year"></span></p>
+  </div>
+</footer>
+
+<!-- زر واتساب عائم -->
+<a class="wa-float" data-wa-link href="#" target="_blank" rel="noopener" aria-label="تواصل عبر واتساب">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.6 14.2c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1a13 13 0 0 1-5.6-4.6c-.4-.6-1-1.5-1-2.9 0-1.3.7-2 1-2.3.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2 0 .4-.1.5l-.4.5c-.1.2-.3.3-.1.6.5.9 1.1 1.5 1.8 2 .3.2.5.2.7 0l.7-.8c.2-.2.3-.2.6-.1l1.8.9c.2.1.4.2.4.3.1.2.1.7-.1 1.3z"/></svg>
+</a>
+
+<script src="script.js?v=1" defer></script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>لوحة تسيير الطلبات — دورة Oussama Sena</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#05070b">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<!-- ==========================================================
+     شاشة الدخول
+     ========================================================== -->
+<div class="gate" id="gate">
+  <form class="gate__card" id="gateForm">
+    <span class="gate__mark" aria-hidden="true"></span>
+    <h1>لوحة تسيير الطلبات</h1>
+    <p>دورة التجارة الإلكترونية والصناعة المحلية</p>
+    <label for="pw" class="sr-only">كلمة السر</label>
+    <input type="password" id="pw" placeholder="كلمة السر" autocomplete="current-password" required>
+    <span class="gate__err" id="gateErr"></span>
+    <button type="submit" class="btn btn--primary btn--block">دخول</button>
+  </form>
+</div>
+
+<!-- ==========================================================
+     اللوحة
+     ========================================================== -->
+<div class="app" id="app" hidden>
+
+  <header class="bar">
+    <div class="wrap bar__in">
+      <div class="bar__brand">
+        <span class="bar__mark" aria-hidden="true"></span>
+        <span class="bar__txt">لوحة تسيير الطلبات<small>By Oussama Sena</small></span>
+      </div>
+      <div class="bar__acts">
+        <a href="index.html" class="btn btn--ghost btn--sm">الصفحة</a>
+        <button type="button" class="btn btn--ghost btn--sm" id="logoutBtn">خروج</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap main">
+
+    <!-- المؤشرات -->
+    <section class="kpis" id="kpis" aria-label="ملخص">
+      <button class="kpi is-active" data-filter="الكل">
+        <span class="kpi__k">كل الطلبات</span><span class="kpi__v" id="kTotal">0</span>
+      </button>
+      <button class="kpi kpi--new" data-filter="جديد">
+        <span class="kpi__k">جديد</span><span class="kpi__v" id="kNew">0</span>
+      </button>
+      <button class="kpi kpi--call" data-filter="تم التواصل">
+        <span class="kpi__k">تم التواصل</span><span class="kpi__v" id="kCall">0</span>
+      </button>
+      <button class="kpi kpi--ok" data-filter="مؤكد">
+        <span class="kpi__k">مؤكد</span><span class="kpi__v" id="kOk">0</span>
+      </button>
+      <button class="kpi kpi--no" data-filter="ملغى">
+        <span class="kpi__k">ملغى</span><span class="kpi__v" id="kNo">0</span>
+      </button>
+      <div class="kpi kpi--money">
+        <span class="kpi__k">المداخيل المؤكدة</span><span class="kpi__v" id="kMoney">0 دج</span>
+      </div>
+    </section>
+
+    <!-- أدوات -->
+    <section class="tools">
+      <div class="search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+        <input type="search" id="q" placeholder="ابحث بالاسم أو الهاتف أو الولاية…" autocomplete="off">
+      </div>
+      <select id="sort" aria-label="الترتيب">
+        <option value="new">الأحدث أولاً</option>
+        <option value="old">الأقدم أولاً</option>
+        <option value="name">حسب الاسم</option>
+        <option value="wilaya">حسب الولاية</option>
+      </select>
+      <button type="button" class="btn btn--ghost btn--sm" id="exportBtn">تصدير Excel</button>
+      <button type="button" class="btn btn--ghost btn--sm" id="backupBtn">نسخة احتياطية</button>
+      <label class="btn btn--ghost btn--sm" for="importFile">استرجاع</label>
+      <input type="file" id="importFile" accept="application/json" hidden>
+      <button type="button" class="btn btn--ghost btn--sm" id="addBtn">+ طلب يدوي</button>
+    </section>
+
+    <p class="count" id="count"></p>
+
+    <!-- القائمة -->
+    <section id="list" class="list"></section>
+
+    <div class="empty" id="empty" hidden>
+      <span aria-hidden="true">📭</span>
+      <h2>لا توجد طلبات بعد</h2>
+      <p>ستظهر هنا الطلبات القادمة من نموذج التسجيل في الصفحة.</p>
+    </div>
+
+  </main>
+</div>
+
+<!-- نافذة إضافة طلب يدوي -->
+<div class="modal" id="addModal" hidden>
+  <form class="modal__card" id="addForm">
+    <h2>إضافة طلب يدوي</h2>
+    <p class="modal__sub">لتسجيل شخص تواصل معك عبر واتساب أو الهاتف.</p>
+
+    <label for="mName">الاسم واللقب</label>
+    <input type="text" id="mName" required>
+
+    <label for="mPhone">رقم الهاتف</label>
+    <input type="tel" id="mPhone" required>
+
+    <label for="mWilaya">الولاية</label>
+    <select id="mWilaya" required><option value="">اختر الولاية</option></select>
+
+    <label for="mNote">ملاحظة</label>
+    <textarea id="mNote" rows="3" placeholder="اختياري…"></textarea>
+
+    <div class="modal__acts">
+      <button type="submit" class="btn btn--primary">إضافة</button>
+      <button type="button" class="btn btn--ghost" data-close>إلغاء</button>
+    </div>
+  </form>
+</div>
+
+<div class="toast" id="toast" hidden></div>
+
+<script src="admin.js" defer></script>
+</body>
+</html>
