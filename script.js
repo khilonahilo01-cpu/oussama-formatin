@@ -8,18 +8,23 @@
    ---------------------------------------------------------- */
 const CONFIG = {
   // رقم واتساب بالصيغة الدولية بدون + وبدون مسافات (213 = الجزائر)
-  whatsapp: '213555000000',
-  // رابط حساب إنستغرام
-  instagram: 'https://instagram.com/oussama.sena',
+  whatsapp: '213558717245',
 
   // طريقة استقبال الطلبات:
-  //   'netlify'   → نماذج Netlify: مجانية وغير محدودة، بلا حساب إضافي ولا مفتاح.
-  //                 ⚠️ لا تشتغل محلياً — تنشط فقط بعد رفع الموقع على Netlify.
-  //                 تشوف الطلبات في: Netlify → موقعك → Forms
-  //                 وللتنبيه بالبريد: Forms → Settings → Form notifications → Email
-  //   'web3forms' → بديل، يحتاج مفتاحاً من https://web3forms.com (250 طلب/شهر مجاناً)
-  //   ''          → بلا إرسال: حفظ محلي + زر واتساب فقط
-  delivery: 'netlify',
+  //   'supabase'  → قاعدة بيانات حقيقية، وهي المستعملة حالياً. اضبط القيم أسفله.
+  //   'netlify'   → نماذج Netlify (تحتاج تفعيل Form detection ثم إعادة نشر)
+  //   'web3forms' → يحتاج مفتاحاً من https://web3forms.com (250 طلب/شهر مجاناً)
+  //   ''          → بلا إرسال: زر واتساب فقط
+  delivery: 'supabase',
+
+  // Supabase — من: Project Settings → API Keys
+  // ⚠️ نفس هاتين القيمتين تُوضعان أيضاً في admin.js
+  // المفتاح publishable عمومي ومكشوف عمداً؛ الحماية تأتي من سياسات RLS (انظر supabase.sql)
+  // 🔴 لا تضع أبداً مفتاح sb_secret_… هنا — ذاك يتجاوز كل الحماية
+  supabase: {
+    url:     'https://ldqohbckqnmpvfglgdje.supabase.co',
+    publishableKey: 'sb_publishable_lM5uJsvKJL0Ax1-uMAe4Jw_WyRwNFny'
+  },
 
   // يُستعمل فقط إذا كانت delivery = 'web3forms'
   web3formsKey: '',
@@ -81,9 +86,6 @@ function initLinks() {
 
   document.querySelectorAll('[data-wa-link]').forEach(a => {
     a.href = waLink(defaultMsg);
-  });
-  document.querySelectorAll('[data-ig-link]').forEach(a => {
-    a.href = CONFIG.instagram;
   });
 
   const year = document.getElementById('year');
@@ -265,7 +267,6 @@ function initForm() {
     }
 
     const data = collect(form);
-    saveLocally(data);
 
     // الإرسال — لا يمنع ظهور رسالة النجاح إذا فشل
     let delivered = true;
@@ -366,6 +367,7 @@ function collect(form) {
 
 /* --- هل الإرسال مفعّل؟ --- */
 function deliveryEnabled() {
+  if (CONFIG.delivery === 'supabase')  return !!(CONFIG.supabase.url && CONFIG.supabase.publishableKey);
   if (CONFIG.delivery === 'netlify')   return true;
   if (CONFIG.delivery === 'web3forms') return !!CONFIG.web3formsKey;
   return false;
@@ -373,9 +375,37 @@ function deliveryEnabled() {
 
 /* --- توجيه الطلب حسب الطريقة المختارة --- */
 function sendLead(data) {
+  if (CONFIG.delivery === 'supabase')  return sendToSupabase(data);
   if (CONFIG.delivery === 'netlify')   return sendToNetlify(data);
   if (CONFIG.delivery === 'web3forms') return sendToEmail(data);
   return Promise.resolve();
+}
+
+/* --- الإرسال إلى Supabase ---
+   سياسة RLS تسمح بـ INSERT فقط للزوار، أما القراءة فتتطلب دخولاً --- */
+async function sendToSupabase(data) {
+  const { url, publishableKey } = CONFIG.supabase;
+
+  const res = await fetch(url.replace(/\/$/, '') + '/rest/v1/registrations', {
+    method: 'POST',
+    headers: {
+      apikey: publishableKey,
+      Authorization: 'Bearer ' + publishableKey,
+      'Content-Type': 'application/json',
+      Prefer: 'return=minimal'
+    },
+    body: JSON.stringify({
+      name:       data.name,
+      phone:      data.phone,
+      wilaya:     data.wilaya,
+      experience: data.experience,
+      product:    data.product,
+      goal:       data.goal,
+      contact:    data.contact
+    })
+  });
+
+  if (!res.ok) throw new Error('HTTP ' + res.status + ' — ' + await res.text());
 }
 
 /* --- الإرسال عبر نماذج Netlify ---
@@ -423,16 +453,6 @@ async function sendToEmail(data) {
 
   const json = await res.json().catch(() => ({}));
   if (!res.ok || !json.success) throw new Error(json.message || 'HTTP ' + res.status);
-}
-
-/* --- حفظ محلي (نسخة احتياطية في متصفح الزائر) --- */
-function saveLocally(data) {
-  try {
-    const key = 'registrations';
-    const list = JSON.parse(localStorage.getItem(key) || '[]');
-    list.push(data);
-    localStorage.setItem(key, JSON.stringify(list));
-  } catch (_) { /* التخزين غير متاح — نتجاهل */ }
 }
 
 /* --- عرض رسالة النجاح ---
