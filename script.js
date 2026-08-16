@@ -344,10 +344,17 @@ function initForm() {
 
     showSuccess(data, delivered);
 
-    // حدث Lead لبيكسل فايسبوك — بعد تسجيل بشري حقيقي فقط،
-    // لا يُطلق للروبوتات لأنها ترجع من الفخّ أعلاه قبل الوصول إلى هنا
+    // حدث التحويل لبيكسل فايسبوك — بعد تسجيل بشري حقيقي فقط،
+    // لا يُطلق للروبوتات لأنها ترجع من الفخّ أعلاه قبل الوصول إلى هنا.
+    //
+    // نستعمل CompleteRegistration لا Lead لسببين:
+    //   1) ميتا تحجب حدث Lead على هذا الحساب (restricted event / suppressed)
+    //   2) «إكمال تسجيل» هو الوصف الأدقّ لما يفعله هذا النموذج فعلاً
     if (typeof fbq === 'function') {
-      fbq('track', 'Lead', { content_name: CONFIG.course.title });
+      fbq('track', 'CompleteRegistration', {
+        content_name: CONFIG.course.title,
+        status: true
+      });
     }
   });
 
