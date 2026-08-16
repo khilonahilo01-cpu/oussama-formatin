@@ -31,7 +31,7 @@ const CONFIG = {
   // معلومات الدورة (تُستعمل في رسالة واتساب)
   course: {
     title: 'دورة التجارة الإلكترونية والصناعة المحلية',
-    date: '15 و16 أوت',
+    date: '25 و26 أوت',
     place: 'الشراڤة',
     price: '29,000 دج'
   },
@@ -344,18 +344,25 @@ function initForm() {
 
     showSuccess(data, delivered);
 
-    // حدث التحويل لبيكسل فايسبوك — بعد تسجيل بشري حقيقي فقط،
+    // حدث التحويل لميتا — بعد تسجيل بشري حقيقي فقط،
     // لا يُطلق للروبوتات لأنها ترجع من الفخّ أعلاه قبل الوصول إلى هنا.
     //
     // نستعمل CompleteRegistration لا Lead لسببين:
     //   1) ميتا تحجب حدث Lead على هذا الحساب (restricted event / suppressed)
     //   2) «إكمال تسجيل» هو الوصف الأدقّ لما يفعله هذا النموذج فعلاً
+    //
+    // يُرسَل مرتين بنفس المعرّف: من المتصفح ومن الخادم.
+    // ميتا تدمجهما في تسجيلة واحدة بفضل eventID/event_id.
+    const eventId = 'reg-' + Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+
     if (typeof fbq === 'function') {
-      fbq('track', 'CompleteRegistration', {
-        content_name: CONFIG.course.title,
-        status: true
-      });
+      fbq('track', 'CompleteRegistration',
+        { content_name: CONFIG.course.title, status: true },
+        { eventID: eventId }
+      );
     }
+
+    sendServerEvent(data, eventId);
   });
 
   // زر "تسجيل شخص آخر"
@@ -450,6 +457,22 @@ function sendLead(data) {
   if (CONFIG.delivery === 'netlify')   return sendToNetlify(data);
   if (CONFIG.delivery === 'web3forms') return sendToEmail(data);
   return Promise.resolve();
+}
+
+/* --- نسخة الخادم من حدث التحويل (Conversions API) ---
+   تصل ميتا حتى لو حجب متصفح الزائر البيكسل.
+   إن لم تكن الدالة منشورة أو التوكن غير مضبوط، تفشل بصمت ولا تؤثر على شيء. */
+function sendServerEvent(data, eventId) {
+  fetch('/.netlify/functions/capi', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      event_id:     eventId,
+      phone:        data.phone,
+      content_name: CONFIG.course.title,
+      source_url:   location.href
+    })
+  }).catch(() => { /* لا يهم — بيكسل المتصفح كافٍ */ });
 }
 
 /* --- الإرسال إلى Supabase ---
