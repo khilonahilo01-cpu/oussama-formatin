@@ -352,7 +352,9 @@ p{ margin:0; }
 }
 .result:hover{ transform:translateY(-4px); border-color:rgba(0,255,163,.35); }
 
+.result{ align-content:start; }
 .result__top{ display:flex; align-items:center; gap:12px; }
+.result__stars{ margin-inline-start:auto; color:#ffc44d; font-size:.82rem; letter-spacing:1px; white-space:nowrap; }
 .result__ava{
   width:46px; height:46px; flex:0 0 auto;
   display:grid; place-items:center; overflow:hidden;
@@ -361,15 +363,8 @@ p{ margin:0; }
 }
 .result__ava img{ width:100%; height:100%; object-fit:cover; }
 .result__who{ display:flex; flex-direction:column; line-height:1.45; min-width:0; }
-.result__who b{ font-size:.95rem; font-weight:900; }
-.result__who span{ color:var(--muted); font-size:.78rem; font-weight:700; }
+.result__who b{ font-size:.92rem; font-weight:900; word-break:break-word; }
 
-.result__badge{
-  justify-self:start;
-  padding:7px 15px; border-radius:999px;
-  background:rgba(0,255,163,.1); border:1px solid rgba(0,255,163,.3);
-  color:var(--neon); font-size:.82rem; font-weight:800;
-}
 .result__quote{
   color:var(--muted); font-size:.9rem; line-height:1.8;
   padding-inline-start:14px;
@@ -516,7 +511,13 @@ p{ margin:0; }
 .field.is-invalid :is(input,select,textarea){ border-color:#ff7a7a; }
 
 .form__hint{ text-align:center; color:var(--muted); font-size:.8rem; }
-.hp{ position:absolute; left:-9999px; opacity:0; pointer-events:none; }
+/* فخّ الروبوتات — مخفي بلا ما يمدّد عرض الصفحة
+   (left:-9999px يسبّب تمريراً أفقياً في صفحات RTL) */
+.hp{
+  position:absolute; width:1px; height:1px;
+  padding:0; margin:-1px; border:0;
+  overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap;
+}
 
 /* رسالة النجاح */
 .success{ text-align:center; padding:14px 4px; animation:pop .5s var(--ease) both; }

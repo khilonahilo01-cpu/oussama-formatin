@@ -48,15 +48,37 @@ const CONFIG = {
 };
 
 /* ----------------------------------------------------------
-   نتائج الطلاب
-   ⚠️ هذه بيانات نموذجية — بدّلها بنتائج حقيقية قبل النشر،
-   واحذف أي بطاقة لا تملك عنها نتيجة فعلية.
-   image: مسار صورة الطالب (اختياري) مثال: 'assets/ahmed.jpg'
+   آراء المشاركين — تعليقات حقيقية منقولة كما كُتبت
+   ⚠️ لا تضف هنا إلا تعليقاً حقيقياً تملك دليله.
+   image: صورة المعلّق (اختيارية) مثال: 'assets/yakob.jpg'
    ---------------------------------------------------------- */
-const RESULTS = [
-  { name: 'اسم الطالب الأول',  wilaya: 'الولاية', badge: 'اكتب النتيجة هنا', quote: 'اكتب هنا شهادة الطالب بكلماته.', image: '' },
-  { name: 'اسم الطالب الثاني', wilaya: 'الولاية', badge: 'اكتب النتيجة هنا', quote: 'اكتب هنا شهادة الطالب بكلماته.', image: '' },
-  { name: 'اسم الطالب الثالث', wilaya: 'الولاية', badge: 'اكتب النتيجة هنا', quote: 'اكتب هنا شهادة الطالب بكلماته.', image: '' }
+const REVIEWS = [
+  { name: 'Melissa',
+    text: 'سلام عليكم كوتش والله أفضل كوتش في دنيا دخلت فرحانة للدار', image: '' },
+
+  { name: '«الحاجّة» لتسجيلات العمرة',
+    text: 'ماشاء الله جيت مترددة والله دوك راني راضية بزاف على المعلومات، يعطيك الصحا اوسامة مدامك مع السبور', image: '' },
+
+  { name: 'SERVICE',
+    text: 'دورة في القمة، شكرا أستاذ ستفدنا منك بزاف ❤️', image: '' },
+
+  { name: 'Foued Phone',
+    text: 'افضل حاجة ديرها كي تستثمر في نفسك باش تتعلم مجال بصح. اسامة تلقى عندو غير بلغة صح، الارقام و احصائيات دقيقة، وين كل نقطة تشرح و توضح عن تجربة و خبرة كبيرة. الله يبارك 🙏', image: '' },
+
+  { name: 'biloubilou433',
+    text: 'Vraiment formation t7asha mel 9alb, des astuces, des stats réel, des chiffres réalisé. Machaa allah yaatik saha w rabi y9adrek, et même suivi après.', image: '' },
+
+  { name: 'sabrina sabi',
+    text: 'Vraiment formation numéro 1 👏 fi la Algerie pour chaque personne 7ab ybda ykhdam sérieux. Bonne courage pour tt', image: '' },
+
+  { name: 'kids shop',
+    text: 'الله يبارك، إنسان صح تع ميدان', image: '' },
+
+  { name: 'kobya_21',
+    text: 'لي حب معلومات قوة من ثيران يروح عند اسامة عينيه مغمضين 👏🔥', image: '' },
+
+  { name: 'Yakob',
+    text: 'اسامة اسطورة الخياطة فالجزائر ✅', image: '' }
 ];
 
 /* ----------------------------------------------------------
@@ -140,16 +162,16 @@ const escape = s => String(s == null ? '' : s)
 
 function initResults() {
   const grid = document.getElementById('resultsGrid');
-  const section = document.getElementById('nataij');
+  const section = document.getElementById('araa');
   if (!grid) return;
 
-  // لا توجد نتائج → نُخفي القسم كاملاً
-  if (!RESULTS.length) {
+  // لا توجد آراء → نُخفي القسم كاملاً
+  if (!REVIEWS.length) {
     if (section) section.hidden = true;
     return;
   }
 
-  grid.innerHTML = RESULTS.map(r => `
+  grid.innerHTML = REVIEWS.map(r => `
     <article class="result reveal">
       <div class="result__top">
         <span class="result__ava">${
@@ -157,11 +179,10 @@ function initResults() {
         }</span>
         <span class="result__who">
           <b>${escape(r.name)}</b>
-          <span>${escape(r.wilaya)}</span>
         </span>
+        <span class="result__stars" aria-label="خمس نجوم">★★★★★</span>
       </div>
-      ${r.badge ? `<p class="result__badge">${escape(r.badge)}</p>` : ''}
-      ${r.quote ? `<p class="result__quote">${escape(r.quote)}</p>` : ''}
+      <p class="result__quote">${escape(r.text)}</p>
     </article>`).join('');
 }
 
@@ -265,6 +286,11 @@ function initForm() {
       }
       return;
     }
+
+    // فخّ الروبوتات: الحقل مخفي عن البشر، فإن كان ممتلئاً فهو روبوت.
+    // نُظهر له رسالة نجاح كاذبة حتى لا يعيد المحاولة، ولا نُرسل شيئاً.
+    const bot = form.elements['bot-field'];
+    if (bot && bot.value.trim()) { showSuccess(collect(form)); return; }
 
     const data = collect(form);
 
@@ -487,6 +513,11 @@ function showSuccess(data, delivered = true) {
   form.hidden = true;
   box.hidden = false;
   box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+  // حدث Lead لبيكسل فايسبوك — يُطلق مرة واحدة عند نجاح التسجيل
+  if (typeof fbq === 'function') {
+    fbq('track', 'Lead', { content_name: CONFIG.course.title });
+  }
 }
 
 
