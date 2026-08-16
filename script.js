@@ -225,6 +225,38 @@ function initVideo() {
 
 
 /* ==========================================================
+   5د) تتبّع مسار التحويل — حدث InitiateCheckout
+   يُطلق مرة واحدة في الزيارة عندما يُبدي الزائر نيّة التسجيل:
+   إما بالضغط على زر تسجيل، أو بوصول النموذج إلى شاشته.
+   الفائدة: يعطي ميتا إشارات أكثر بكثير من Lead وحده،
+   فتتعلّم الخوارزمية أسرع في بداية الحملة.
+   ========================================================== */
+function initFunnelTracking() {
+  let fired = false;
+
+  const fire = () => {
+    if (fired || typeof fbq !== 'function') return;
+    fired = true;
+    fbq('track', 'InitiateCheckout', { content_name: CONFIG.course.title });
+  };
+
+  // 1) الضغط على أي زر يقود إلى النموذج
+  document.querySelectorAll('a[href="#tasjil"]').forEach(a => {
+    a.addEventListener('click', fire, { passive: true });
+  });
+
+  // 2) أو ظهور النموذج على الشاشة (لمن ينزل بالتمرير مباشرة)
+  const wrap = document.querySelector('.formwrap');
+  if (wrap && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => {
+      if (entries.some(e => e.isIntersecting)) { fire(); io.disconnect(); }
+    }, { threshold: 0.15 });
+    io.observe(wrap);
+  }
+}
+
+
+/* ==========================================================
    6) الأسئلة الشائعة — فتح واحد في كل مرة
    ========================================================== */
 function initFaq() {
@@ -311,6 +343,12 @@ function initForm() {
     }
 
     showSuccess(data, delivered);
+
+    // حدث Lead لبيكسل فايسبوك — بعد تسجيل بشري حقيقي فقط،
+    // لا يُطلق للروبوتات لأنها ترجع من الفخّ أعلاه قبل الوصول إلى هنا
+    if (typeof fbq === 'function') {
+      fbq('track', 'Lead', { content_name: CONFIG.course.title });
+    }
   });
 
   // زر "تسجيل شخص آخر"
@@ -513,11 +551,6 @@ function showSuccess(data, delivered = true) {
   form.hidden = true;
   box.hidden = false;
   box.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-  // حدث Lead لبيكسل فايسبوك — يُطلق مرة واحدة عند نجاح التسجيل
-  if (typeof fbq === 'function') {
-    fbq('track', 'Lead', { content_name: CONFIG.course.title });
-  }
 }
 
 
@@ -532,4 +565,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initReveal();
   initFaq();
   initForm();
+  initFunnelTracking();   // بعد initForm حتى يكون النموذج جاهزاً
 });
